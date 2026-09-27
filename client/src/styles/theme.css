@@ -1,0 +1,820 @@
+:root {
+  --focus-ring: rgba(111, 158, 39, 0.24);
+  --overlay: rgba(7, 24, 16, 0.6);
+  --success-surface: #eff7e4;
+  --success-ink: #49683b;
+  --warning-surface: #fff8e7;
+  --warning-ink: #765c18;
+  --danger-surface: #fff1ec;
+  --danger-ink: #9a3e2d;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+  --ink-950: #eef7f1;
+  --ink-900: #dfebe3;
+  --ink-800: #c8d8ce;
+  --ink-700: #adc0b4;
+  --ink-600: #91a59a;
+  --ink-500: #74887d;
+  --surface: #0b1410;
+  --surface-raised: #111d17;
+  --surface-soft: #17251e;
+  --surface-muted: #1c2d25;
+  --surface-deep: #1b513c;
+  --surface-deeper: #11392a;
+  --line: rgba(218, 241, 225, 0.1);
+  --line-strong: rgba(218, 241, 225, 0.2);
+  --lime: #c9f277;
+  --lime-deep: #9dcb4f;
+  --coral: #f29378;
+  --sky: #72c5d8;
+  --sun: #efc65a;
+  --mint: #20392a;
+  --peach: #3b2924;
+  --blue-soft: #1b343a;
+  --danger: #ff9982;
+  --shadow-soft: 0 12px 32px rgba(0, 0, 0, 0.22);
+  --shadow-card: 0 22px 60px rgba(0, 0, 0, 0.28);
+  --focus-ring: rgba(201, 242, 119, 0.2);
+  --overlay: rgba(2, 9, 6, 0.78);
+  --success-surface: #1b3425;
+  --success-ink: #bde783;
+  --warning-surface: #352f1f;
+  --warning-ink: #efd278;
+  --danger-surface: #3a241f;
+  --danger-ink: #ffad99;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body,
+.landing-page,
+.dashboard-app,
+.dashboard-main,
+.auth-page,
+.auth-form-panel,
+.status-page {
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+::selection {
+  color: #10251c;
+  background: var(--lime);
+}
+
+html[data-theme='dark'] {
+  scrollbar-color: #40574b var(--surface);
+}
+
+html[data-theme='dark'] input,
+html[data-theme='dark'] select,
+html[data-theme='dark'] textarea {
+  color-scheme: dark;
+}
+
+html[data-theme='dark'] input::placeholder,
+html[data-theme='dark'] textarea::placeholder {
+  color: var(--ink-500);
+  opacity: 1;
+}
+
+html[data-theme='dark'] option {
+  color: var(--ink-900);
+  background: var(--surface-raised);
+}
+
+html[data-theme='dark'] input:-webkit-autofill,
+html[data-theme='dark'] input:-webkit-autofill:hover,
+html[data-theme='dark'] input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--ink-950);
+  caret-color: var(--ink-950);
+  box-shadow: 0 0 0 1000px var(--surface-raised) inset;
+  transition: background-color 9999s ease-out;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  min-width: 104px;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 6px 13px 6px 7px;
+  color: var(--ink-800);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface-raised) 88%, transparent);
+  box-shadow: 0 8px 24px rgba(16, 37, 28, 0.06);
+  cursor: pointer;
+  transition:
+    color 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.theme-toggle:hover {
+  color: var(--ink-950);
+  border-color: var(--lime-deep);
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-soft);
+  transform: translateY(-1px);
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+.theme-toggle-icon {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  place-items: center;
+  color: var(--surface-deeper);
+  border-radius: 50%;
+  background: var(--lime);
+  transition: transform 220ms ease;
+}
+
+.theme-toggle:hover .theme-toggle-icon {
+  transform: rotate(-10deg) scale(1.04);
+}
+
+.theme-toggle-compact {
+  min-width: 38px;
+  min-height: 38px;
+  padding: 4px;
+}
+
+.theme-toggle-compact > span:last-child {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.dashboard-theme-toggle {
+  width: 100%;
+  justify-content: flex-start;
+  margin-top: 14px;
+}
+
+.auth-story-topbar,
+.status-page-header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.auth-story .theme-toggle {
+  color: rgba(255, 255, 255, 0.82);
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+}
+
+.auth-story .theme-toggle:hover {
+  color: #fff;
+  border-color: rgba(201, 242, 119, 0.48);
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.status-page-header {
+  max-width: 1180px;
+  margin: 0 auto 72px;
+}
+
+.status-page .status-page-header .brand {
+  margin: 0;
+}
+
+html[data-theme='dark'] .button-secondary,
+html[data-theme='dark'] .icon-button,
+html[data-theme='dark'] .field-input,
+html[data-theme='dark'] .dialog,
+html[data-theme='dark'] .toast,
+html[data-theme='dark'] .auth-preview-shell,
+html[data-theme='dark'] .card {
+  border-color: var(--line-strong);
+  background: var(--surface-raised);
+}
+
+html[data-theme='dark'] .button-secondary:hover,
+html[data-theme='dark'] .icon-button:hover {
+  border-color: rgba(201, 242, 119, 0.42);
+  background: var(--surface-soft);
+}
+
+html[data-theme='dark'] .button-ghost:hover {
+  border-color: var(--line-strong);
+  background: var(--surface-soft);
+}
+
+html[data-theme='dark'] .button:focus-visible,
+html[data-theme='dark'] .icon-button:focus-visible,
+html[data-theme='dark'] .field-input:focus,
+html[data-theme='dark'] input:focus-visible,
+html[data-theme='dark'] select:focus-visible,
+html[data-theme='dark'] textarea:focus-visible {
+  outline-color: var(--focus-ring);
+}
+
+html[data-theme='dark'] .button:disabled,
+html[data-theme='dark'] input:disabled,
+html[data-theme='dark'] select:disabled,
+html[data-theme='dark'] textarea:disabled {
+  opacity: 0.56;
+}
+
+html[data-theme='dark'] .badge {
+  color: var(--success-ink);
+  border-color: rgba(201, 242, 119, 0.2);
+  background: var(--success-surface);
+}
+
+html[data-theme='dark'] .badge-warm {
+  color: var(--danger-ink);
+  border-color: rgba(242, 147, 120, 0.22);
+  background: var(--danger-surface);
+}
+
+html[data-theme='dark'] .badge-muted {
+  color: var(--ink-700);
+  border-color: var(--line);
+  background: var(--surface-soft);
+}
+
+html[data-theme='dark'] .eyebrow,
+html[data-theme='dark'] .dashboard-kicker {
+  color: var(--lime-deep);
+}
+
+html[data-theme='dark'] .dialog::backdrop {
+  background: var(--overlay);
+}
+
+html[data-theme='dark'] .auth-preview-page {
+  background:
+    radial-gradient(circle at 15% 10%, rgba(201, 242, 119, 0.08), transparent 25rem),
+    radial-gradient(circle at 85% 80%, rgba(114, 197, 216, 0.06), transparent 27rem), var(--surface);
+}
+
+html[data-theme='dark'] .auth-security-note {
+  border-color: var(--line);
+  background: var(--surface-soft);
+}
+
+/* Landing page */
+html[data-theme='dark'] .landing-page {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(201, 242, 119, 0.08), transparent 30rem),
+    radial-gradient(circle at 88% 24%, rgba(114, 197, 216, 0.07), transparent 34rem), var(--surface);
+}
+
+html[data-theme='dark'] .site-header {
+  border-bottom-color: var(--line);
+  background: rgba(11, 20, 16, 0.86);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.14);
+}
+
+html[data-theme='dark'] .hero-copy .eyebrow,
+html[data-theme='dark'] .feature-card .eyebrow,
+html[data-theme='dark'] .product-principles .eyebrow {
+  color: var(--lime-deep);
+}
+
+html[data-theme='dark'] .hero h1 em {
+  color: var(--success-ink);
+}
+
+html[data-theme='dark'] .product-preview-glow {
+  background:
+    radial-gradient(circle at 22% 18%, rgba(201, 242, 119, 0.16), transparent 32%),
+    radial-gradient(circle at 82% 74%, rgba(114, 197, 216, 0.12), transparent 34%);
+}
+
+html[data-theme='dark'] .product-preview,
+html[data-theme='dark'] .product-preview-note,
+html[data-theme='dark'] .feature-card,
+html[data-theme='dark'] .product-principles {
+  border-color: var(--line-strong);
+  background: rgba(17, 29, 23, 0.92);
+}
+
+html[data-theme='dark'] .product-preview-calendar,
+html[data-theme='dark'] .product-preview-meal-icon,
+html[data-theme='dark'] .preview-progress {
+  border-color: var(--line);
+  background: var(--surface-soft);
+}
+
+html[data-theme='dark'] .motion-media-card {
+  border-color: rgba(201, 242, 119, 0.14);
+  box-shadow: 0 28px 72px rgba(0, 0, 0, 0.34);
+}
+
+html[data-theme='dark'] .closing-metric {
+  border-color: rgba(255, 255, 255, 0.13);
+}
+
+html[data-theme='dark'] .how-section,
+html[data-theme='dark'] .closing-card {
+  box-shadow: 0 28px 72px rgba(0, 0, 0, 0.28);
+}
+
+html[data-theme='dark'] .site-footer {
+  border-top-color: var(--line);
+}
+
+/* Authentication and status pages */
+html[data-theme='dark'] .auth-story {
+  background:
+    radial-gradient(circle at 18% 20%, rgba(201, 242, 119, 0.13), transparent 28rem),
+    linear-gradient(145deg, #0d3526, #081b14 72%);
+}
+
+html[data-theme='dark'] .auth-form-panel {
+  background:
+    radial-gradient(circle at 82% 14%, rgba(114, 197, 216, 0.06), transparent 24rem),
+    var(--surface-raised);
+}
+
+html[data-theme='dark'] .auth-lock,
+html[data-theme='dark'] .session-loading-mark {
+  color: var(--lime);
+  background: var(--mint);
+}
+
+html[data-theme='dark'] .auth-error,
+html[data-theme='dark'] .field-error {
+  color: var(--danger-ink);
+  border-color: rgba(255, 153, 130, 0.22);
+  background: var(--danger-surface);
+}
+
+html[data-theme='dark'] .auth-switch {
+  border-top-color: var(--line);
+}
+
+/* Application shell and dashboard */
+html[data-theme='dark'] .dashboard-sidebar,
+html[data-theme='dark'] .dashboard-mobile-header,
+html[data-theme='dark'] .dashboard-mobile-nav {
+  border-color: var(--line);
+  background: rgba(13, 23, 18, 0.94);
+  backdrop-filter: blur(22px);
+}
+
+html[data-theme='dark'] .dashboard-nav-link:hover,
+html[data-theme='dark'] .dashboard-nav-link.active,
+html[data-theme='dark'] .dashboard-mobile-nav a.active {
+  color: var(--ink-950);
+  background: rgba(201, 242, 119, 0.11);
+}
+
+html[data-theme='dark'] .dashboard-nav-link.active::before {
+  background: var(--lime);
+}
+
+html[data-theme='dark'] .dashboard-main {
+  background:
+    radial-gradient(circle at 86% 3%, rgba(114, 197, 216, 0.055), transparent 26rem),
+    radial-gradient(circle at 15% 20%, rgba(201, 242, 119, 0.045), transparent 24rem),
+    var(--surface);
+}
+
+html[data-theme='dark'] .date-navigator,
+html[data-theme='dark'] .dashboard-stat,
+html[data-theme='dark'] .nutrition-progress-card,
+html[data-theme='dark'] .food-log-shell,
+html[data-theme='dark'] .meal-section,
+html[data-theme='dark'] .fiber-intake-card {
+  border-color: var(--line-strong);
+  background: var(--surface-raised);
+  box-shadow: var(--shadow-soft);
+}
+
+html[data-theme='dark'] .date-navigator > button:not(.button),
+html[data-theme='dark'] .date-navigator-actions input {
+  color: var(--ink-800);
+  border-color: var(--line-strong);
+  background: var(--surface-soft);
+}
+
+html[data-theme='dark'] .date-navigator > button:not(.button):hover {
+  border-color: rgba(201, 242, 119, 0.35);
+  background: var(--surface-muted);
+}
+
+html[data-theme='dark'] .nutrition-progress-card:hover {
+  border-color: rgba(201, 242, 119, 0.24);
+}
+
+html[data-theme='dark'] .nutrition-card-icon,
+html[data-theme='dark'] .meal-section-icon,
+html[data-theme='dark'] .whole-day-empty > span,
+html[data-theme='dark'] .fiber-intake-icon {
+  color: var(--success-ink);
+  background: var(--success-surface);
+}
+
+html[data-theme='dark'] .nutrition-progress-card-peach .nutrition-card-icon,
+html[data-theme='dark'] .meal-section-lunch .meal-section-icon {
+  color: #ffb19a;
+  background: var(--peach);
+}
+
+html[data-theme='dark'] .nutrition-progress-card-blue .nutrition-card-icon,
+html[data-theme='dark'] .meal-section-dinner .meal-section-icon {
+  color: #8bd9e8;
+  background: var(--blue-soft);
+}
+
+html[data-theme='dark'] .nutrition-progress-card-sun .nutrition-card-icon,
+html[data-theme='dark'] .meal-section-snack .meal-section-icon {
+  color: #f1d77f;
+  background: var(--warning-surface);
+}
+
+html[data-theme='dark'] .nutrition-progress-track,
+html[data-theme='dark'] .recipe-score-track {
+  background: var(--surface-muted);
+}
+
+html[data-theme='dark'] .whole-day-empty,
+html[data-theme='dark'] .meal-section-header,
+html[data-theme='dark'] .meal-entry-macros div,
+html[data-theme='dark'] .fiber-no-target {
+  border-color: var(--line);
+  background: var(--surface-soft);
+}
+
+html[data-theme='dark'] .meal-entry,
+html[data-theme='dark'] .nutrition-card-details {
+  border-color: var(--line);
+}
+
+html[data-theme='dark'] .meal-entry-actions button:not(:disabled):hover {
+  color: var(--ink-950);
+  border-color: var(--line-strong);
+  background: var(--surface-soft);
+}
+
+html[data-theme='dark'] .meal-entry-actions button:last-child:not(:disabled):hover,
+html[data-theme='dark'] .dashboard-error,
+html[data-theme='dark'] .add-food-submit-error,
+html[data-theme='dark'] .delete-food-error {
+  color: var(--danger-ink);
+  border-color: rgba(255, 153, 130, 0.22);
+  background: var(--danger-surface);
+}
+
+html[data-theme='dark'] .dashboard-error > span,
+html[data-theme='dark'] .delete-food-warning {
+  color: var(--danger-ink);
+  background: var(--danger-surface);
+}
+
+html[data-theme='dark'] .dashboard-skeleton::after,
+html[data-theme='dark'] .recipe-loading-lines span::after {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+}
+
+/* Food log dialogs */
+html[data-theme='dark'] .add-food-date,
+html[data-theme='dark'] .add-food-meals label > span,
+html[data-theme='dark'] .add-food-combobox input,
+html[data-theme='dark'] .add-food-custom-fields input,
+html[data-theme='dark'] .add-food-search-results,
+html[data-theme='dark'] .add-food-quantity-row select,
+html[data-theme='dark'] .add-food-actions,
+html[data-theme='dark'] .delete-food-record {
+  color: var(--ink-800);
+  border-color: var(--line-strong);
+  background: var(--surface-raised);
+}
+
+html[data-theme='dark'] .add-food-meals label > span:hover,
+html[data-theme='dark'] .add-food-search-results li.active,
+html[data-theme='dark'] .add-food-selected,
+html[data-theme='dark'] .add-food-custom-fields,
+html[data-theme='dark'] .add-food-source-tabs,
+html[data-theme='dark'] .delete-food-record > span {
+  color: var(--ink-950);
+  border-color: rgba(201, 242, 119, 0.3);
+  background: var(--success-surface);
+}
+
+html[data-theme='dark'] .add-food-selected-copy > span {
+  color: var(--success-ink);
+}
+
+html[data-theme='dark'] .food-thumbnail {
+  border-color: rgba(223, 239, 229, 0.12);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.05);
+}
+
+html[data-theme='dark'] .add-food-field-error {
+  color: var(--danger-ink);
+}
+
+html[data-theme='dark'] .add-food-meals input:checked + span {
+  color: #10251c;
+  border-color: var(--lime);
+  background: var(--lime);
+}
+
+html[data-theme='dark'] .add-food-source-tabs button.active {
+  color: var(--ink-950);
+  background: var(--surface-raised);
+}
+
+html[data-theme='dark'] .add-food-search-results li,
+html[data-theme='dark'] .add-food-actions,
+html[data-theme='dark'] .delete-food-record {
+  border-color: var(--line);
+}
+
+html[data-theme='dark'] .add-food-quantity-row select:disabled {
+  color: var(--ink-500);
+  background: var(--surface-soft);
+}
+
+html[data-theme='dark'] .add-food-preview {
+  border-color: rgba(201, 242, 119, 0.12);
+  background:
+    radial-gradient(circle at 80% 15%, rgba(114, 197, 216, 0.09), transparent 18rem), #0d2c20;
+}
+
+/* Recipes and saved recipes */
+html[data-theme='dark'] .recipes-view-switch,
+html[data-theme='dark'] .recipe-provider-note,
+html[data-theme='dark'] .recipe-input-panel,
+html[data-theme='dark'] .recipe-results-panel,
+html[data-theme='dark'] .recipe-add-ingredient-form,
+html[data-theme='dark'] .recipe-ingredient-edit-form,
+html[data-theme='dark'] .recipe-ingredient-list-empty,
+html[data-theme='dark'] .recipe-filter-disclaimer,
+html[data-theme='dark'] .recipe-advanced-filters,
+html[data-theme='dark'] .recipe-onboarding-flow article,
+html[data-theme='dark'] .recipe-results-success-heading,
+html[data-theme='dark'] .recipe-results-criteria,
+html[data-theme='dark'] .recipe-card,
+html[data-theme='dark'] .recipe-card-meta > div,
+html[data-theme='dark'] .recipe-card-nutrition > div,
+html[data-theme='dark'] .recipe-card-ingredient-group,
+html[data-theme='dark'] .recipe-card-ingredient-group li,
+html[data-theme='dark'] .recipe-card-reason,
+html[data-theme='dark'] .saved-recipes-panel,
+html[data-theme='dark'] .saved-recipes-state,
+html[data-theme='dark'] .recipe-detail-nutrition,
+html[data-theme='dark'] .recipe-score-breakdown,
+html[data-theme='dark'] .recipe-detail-ingredient-section,
+html[data-theme='dark'] .recipe-detail-steps,
+html[data-theme='dark'] .recipe-score-components > div,
+html[data-theme='dark'] .recipe-detail-provider-note,
+html[data-theme='dark'] .profile-identity-card,
+html[data-theme='dark'] .profile-info-card {
+  border-color: var(--line-strong);
+  background: var(--surface-raised);
+}
+
+html[data-theme='dark'] .recipe-results-panel,
+html[data-theme='dark'] .saved-recipes-panel {
+  background:
+    radial-gradient(circle at 96% 3%, rgba(114, 197, 216, 0.07), transparent 22rem),
+    var(--surface-raised);
+}
+
+html[data-theme='dark'] .recipes-view-switch button.active {
+  color: var(--ink-950);
+  background: var(--surface-muted);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+html[data-theme='dark'] .recipe-provider-note,
+html[data-theme='dark'] .recipe-filter-disclaimer,
+html[data-theme='dark'] .recipe-ingredient-list-empty,
+html[data-theme='dark'] .recipe-advanced-filters,
+html[data-theme='dark'] .recipe-card-reason,
+html[data-theme='dark'] .recipe-detail-provider-note {
+  background: var(--surface-soft);
+}
+
+html[data-theme='dark'] .recipe-card {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(201, 242, 119, 0.045), transparent 18rem),
+    var(--surface-raised);
+}
+
+html[data-theme='dark'] .recipe-card-meta > div {
+  background: var(--surface-soft);
+}
+
+html[data-theme='dark'] .recipe-card-nutrition > div {
+  background: var(--surface-muted);
+}
+
+html[data-theme='dark'] .recipe-card-ingredient-group {
+  background: var(--surface);
+}
+
+html[data-theme='dark'] .recipe-match-gauge {
+  color: var(--success-ink);
+  border: 1px solid rgba(201, 242, 119, 0.18);
+  background: var(--success-surface);
+}
+
+html[data-theme='dark'] .recipe-advanced-filters > summary,
+html[data-theme='dark'] .recipe-preference-grid-advanced {
+  border-color: var(--line);
+}
+
+html[data-theme='dark'] .recipe-criteria-chip {
+  color: var(--ink-700);
+  border-color: var(--line);
+  background: var(--surface-muted);
+}
+
+html[data-theme='dark'] .recipe-criteria-chip-filter,
+html[data-theme='dark'] .recipe-advanced-summary-meta strong {
+  color: var(--success-ink);
+  border-color: rgba(201, 242, 119, 0.2);
+  background: var(--success-surface);
+}
+
+html[data-theme='dark'] .recipe-ingredient-field select,
+html[data-theme='dark'] .recipe-ingredient-field input,
+html[data-theme='dark'] .recipe-preference-field input,
+html[data-theme='dark'] .recipe-preference-field select,
+html[data-theme='dark'] .recipe-shell-field input {
+  color: var(--ink-900);
+  border-color: var(--line-strong);
+  background: var(--surface-raised);
+}
+
+html[data-theme='dark'] .recipe-ingredient-chip,
+html[data-theme='dark'] .recipe-card-ingredient-group li,
+html[data-theme='dark'] .recipe-score-components > div {
+  border-color: var(--line);
+  background: var(--surface-soft);
+}
+
+html[data-theme='dark'] .recipe-icon-button:hover {
+  color: var(--ink-950);
+  background: var(--surface-muted);
+}
+
+html[data-theme='dark'] .recipe-icon-button-danger:hover,
+html[data-theme='dark'] .recipe-field-error,
+html[data-theme='dark'] .recipe-preference-error,
+html[data-theme='dark'] .recipe-form-error,
+html[data-theme='dark'] .saved-recipes-feedback-error,
+html[data-theme='dark'] .recipe-results-error {
+  color: var(--danger-ink);
+  border-color: rgba(255, 153, 130, 0.22);
+  background: var(--danger-surface);
+}
+
+html[data-theme='dark'] .recipe-onboarding-flow article.is-complete,
+html[data-theme='dark'] .recipe-onboarding-flow article.is-active,
+html[data-theme='dark'] .saved-recipes-feedback:not(.saved-recipes-feedback-error) {
+  color: var(--success-ink);
+  border-color: rgba(201, 242, 119, 0.24);
+  background: var(--success-surface);
+}
+
+html[data-theme='dark'] .recipe-onboarding-flow article > span,
+html[data-theme='dark'] .recipe-results-success-heading > span,
+html[data-theme='dark'] .saved-recipes-heading > span,
+html[data-theme='dark'] .profile-card-icon,
+html[data-theme='dark'] .recipe-panel-heading > span {
+  color: var(--success-ink);
+  background: var(--success-surface);
+}
+
+html[data-theme='dark'] .recipe-match-gauge > span {
+  background: var(--surface-raised);
+}
+
+html[data-theme='dark'] .recipe-results-success-heading .recipe-results-fallback-note,
+html[data-theme='dark'] .recipe-card-fallback,
+html[data-theme='dark'] .recipe-provider-warning {
+  color: var(--warning-ink);
+  border-color: rgba(239, 198, 90, 0.2);
+  background: var(--warning-surface);
+}
+
+html[data-theme='dark'] .recipe-card-remove {
+  color: var(--danger-ink);
+  border-color: rgba(255, 153, 130, 0.24);
+}
+
+html[data-theme='dark'] .recipe-details-dialog {
+  border-color: var(--line-strong);
+  background: var(--surface-raised);
+}
+
+html[data-theme='dark'] .recipe-details-dialog .dialog-heading,
+html[data-theme='dark'] .recipe-detail-footer {
+  border-color: var(--line);
+  background: rgba(17, 29, 23, 0.96);
+}
+
+html[data-theme='dark'] .recipe-detail-meta > div,
+html[data-theme='dark'] .recipe-detail-nutrition > dl > div,
+html[data-theme='dark'] .recipe-detail-ingredient-section li,
+html[data-theme='dark'] .recipe-detail-ingredient-section li small,
+html[data-theme='dark'] .recipe-score-reason,
+html[data-theme='dark'] .recipe-nutrition-caution,
+html[data-theme='dark'] .recipe-nutrition-provenance {
+  color: var(--ink-700);
+  border-color: var(--line);
+  background: var(--surface-soft);
+}
+
+html[data-theme='dark'] .recipe-details-scroll {
+  scrollbar-color: #40574b transparent;
+}
+
+html[data-theme='dark'] .profile-avatar {
+  color: #10251c;
+}
+
+html[data-theme='dark'] .profile-privacy-card {
+  border-color: rgba(201, 242, 119, 0.13);
+  background:
+    radial-gradient(circle at 92% 15%, rgba(114, 197, 216, 0.08), transparent 20rem), #103528;
+}
+
+@media (max-width: 760px) {
+  .nav-actions .theme-toggle {
+    min-width: 38px;
+    padding: 4px;
+  }
+
+  .nav-actions .theme-toggle > span:last-child {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .status-page-header {
+    margin-bottom: 48px;
+  }
+}
+
+@media (max-width: 560px) {
+  .auth-story-topbar .theme-toggle {
+    min-width: 38px;
+    padding: 4px;
+  }
+
+  .auth-story-topbar .theme-toggle > span:last-child {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .status-page-header {
+    margin-bottom: 36px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  .landing-page,
+  .dashboard-app,
+  .dashboard-main,
+  .auth-page,
+  .auth-form-panel,
+  .status-page,
+  .theme-toggle,
+  .theme-toggle-icon {
+    transition: none;
+  }
+}

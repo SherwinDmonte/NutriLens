@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Log meals in seconds, understand calories and macros, and build a clearer picture of your daily nutrition with NutriLens."
+    />
+    <meta property="og:title" content="NutriLens | See the story behind every meal" />
+    <meta
+      property="og:description"
+      content="A beautifully simple manual food log for calories, macros, meals, and daily progress."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="NutriLens | See the story behind every meal" />
+    <meta
+      name="twitter:description"
+      content="A beautifully simple manual food log for calories, macros, meals, and daily progress."
+    />
+    <meta name="theme-color" content="#f5f7f3" />
+    <link
+      id="app-favicon"
+      rel="icon"
+      type="image/svg+xml"
+      href="/brand/nutrilens-focus-leaf-icon-light.svg"
+    />
+    <script>
+      (() => {
+        const storageKey = 'nutrilens-theme';
+        let theme = 'light';
+        try {
+          const storedTheme = window.localStorage.getItem(storageKey);
+          theme =
+            storedTheme === 'light' || storedTheme === 'dark'
+              ? storedTheme
+              : window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light';
+        } catch {
+          theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+        document
+          .querySelector('meta[name="theme-color"]')
+          ?.setAttribute('content', theme === 'dark' ? '#0c1511' : '#f5f7f3');
+        document
+          .querySelector('#app-favicon')
+          ?.setAttribute(
+            'href',
+            theme === 'dark'
+              ? '/brand/nutrilens-focus-leaf-icon-dark.svg'
+              : '/brand/nutrilens-focus-leaf-icon-light.svg',
+          );
+      })();
+    </script>
+    <title>NutriLens | See the story behind every meal</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

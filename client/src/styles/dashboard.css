@@ -1,0 +1,1295 @@
+.dashboard-app {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 232px minmax(0, 1fr);
+  background: var(--surface);
+}
+
+.dashboard-sidebar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  min-width: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 18px 20px;
+  border-right: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.dashboard-sidebar .brand {
+  margin-inline: 8px;
+}
+
+.dashboard-nav-label {
+  margin: 46px 12px 10px;
+  color: var(--ink-500);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.dashboard-nav {
+  display: grid;
+  gap: 4px;
+}
+
+.dashboard-nav-link {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 44px;
+  align-items: center;
+  gap: 11px;
+  padding: 0 12px;
+  border-radius: 10px;
+  color: var(--ink-600);
+  font-size: 0.78rem;
+  font-weight: 650;
+  transition:
+    color 150ms ease,
+    background-color 150ms ease;
+}
+
+.dashboard-nav-link:hover {
+  color: var(--ink-900);
+  background: var(--surface-soft);
+}
+
+.dashboard-nav-link.active {
+  color: var(--surface-deep);
+  background: #ebf5df;
+}
+
+.dashboard-nav-link.active::before {
+  position: absolute;
+  left: 0;
+  width: 3px;
+  height: 18px;
+  border-radius: 0 3px 3px 0;
+  background: var(--lime-deep);
+  content: '';
+}
+
+.dashboard-nav-link svg {
+  flex: 0 0 auto;
+}
+
+.dashboard-sidebar-account {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding: 12px 8px;
+  border-block: 1px solid var(--line);
+}
+
+.dashboard-sidebar-account > span,
+.dashboard-mobile-account > a {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 10px;
+  color: var(--surface-deeper);
+  background: var(--lime);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.dashboard-sidebar-account > span {
+  width: 36px;
+  height: 36px;
+}
+
+.dashboard-sidebar-account div {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.dashboard-sidebar-account strong,
+.dashboard-sidebar-account small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dashboard-sidebar-account strong {
+  color: var(--ink-900);
+  font-size: 0.72rem;
+}
+
+.dashboard-sidebar-account small {
+  color: var(--ink-500);
+  font-size: 0.6rem;
+}
+
+.dashboard-logout {
+  width: 100%;
+  justify-content: flex-start;
+  margin-top: 6px;
+}
+
+.dashboard-main {
+  min-width: 0;
+  padding: 44px clamp(28px, 4vw, 64px) 72px;
+  background:
+    radial-gradient(circle at 94% 2%, rgba(201, 242, 119, 0.11), transparent 24rem), var(--surface);
+}
+
+.dashboard-main > *:not(.dashboard-mobile-header) {
+  width: min(100%, 1320px);
+  margin-inline: auto;
+}
+
+.dashboard-mobile-header,
+.dashboard-mobile-nav {
+  display: none;
+}
+
+.dashboard-intro {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 36px;
+  margin-bottom: 28px;
+}
+
+.dashboard-kicker {
+  overflow: visible;
+  margin-bottom: 8px;
+  padding-inline: 2px;
+  color: #658052;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.dashboard-intro h1 {
+  max-width: 780px;
+  margin-bottom: 9px;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: clamp(2.5rem, 4vw, 4.1rem);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.052em;
+}
+
+.dashboard-intro > div > p:last-child {
+  margin: 0;
+  color: var(--ink-600);
+  font-size: 0.85rem;
+}
+
+.dashboard-intro-actions {
+  flex: 0 0 auto;
+}
+
+.date-navigator {
+  display: grid;
+  grid-template-columns: 42px minmax(220px, 1fr) 42px auto;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 40px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: #fff;
+  box-shadow: var(--shadow-xs);
+}
+
+.date-navigator > button:not(.button) {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  color: var(--ink-700);
+  background: var(--surface);
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease;
+}
+
+.date-navigator > button:not(.button):hover {
+  border-color: var(--line-strong);
+  background: var(--surface-soft);
+}
+
+.date-navigator-label {
+  min-width: 0;
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+  text-align: center;
+}
+
+.date-navigator-label > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink-600);
+  font-size: 0.65rem;
+  font-weight: 650;
+}
+
+.date-navigator-label h2 {
+  overflow: hidden;
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.date-navigator-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.date-navigator-actions input {
+  min-height: 42px;
+  padding: 0 11px;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  color: var(--ink-800);
+  background: #fff;
+  font-size: 0.72rem;
+}
+
+.date-navigator-actions .button {
+  min-height: 42px;
+}
+
+.dashboard-data {
+  display: grid;
+  gap: 42px;
+  animation: rise-in 300ms ease both;
+}
+
+.dashboard-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.dashboard-stat {
+  min-height: 116px;
+  display: grid;
+  align-content: space-between;
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: #fff;
+}
+
+.dashboard-stat > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--ink-600);
+  font-size: 0.68rem;
+  font-weight: 650;
+}
+
+.dashboard-stat strong {
+  margin-top: 10px;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.dashboard-stat small {
+  color: var(--ink-500);
+  font-size: 0.64rem;
+}
+
+.nutrition-progress-section {
+  min-width: 0;
+}
+
+.nutrition-progress-heading,
+.dashboard-section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.nutrition-progress-heading {
+  margin-bottom: 18px;
+}
+
+.nutrition-progress-heading h2,
+.dashboard-section-heading h2 {
+  margin: 0;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.nutrition-progress-heading > p {
+  max-width: 380px;
+  margin: 0;
+  color: var(--ink-500);
+  font-size: 0.68rem;
+  line-height: 1.5;
+  text-align: right;
+}
+
+.nutrition-progress-grid,
+.nutrition-progress-skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.nutrition-progress-card {
+  min-width: 0;
+  min-height: 246px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: #fff;
+  box-shadow: var(--shadow-xs);
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.nutrition-progress-card:nth-child(1) {
+  animation: rise-in 320ms ease both;
+}
+
+.nutrition-progress-card:nth-child(2) {
+  animation: rise-in 320ms 55ms ease both;
+}
+
+.nutrition-progress-card:nth-child(3) {
+  animation: rise-in 320ms 110ms ease both;
+}
+
+.nutrition-progress-card:nth-child(4) {
+  animation: rise-in 320ms 165ms ease both;
+}
+
+.nutrition-progress-card:hover {
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-2px);
+}
+
+.nutrition-card-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.nutrition-card-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  color: #587343;
+  background: #edf6e1;
+}
+
+.nutrition-progress-card-peach .nutrition-card-icon {
+  color: #8a4f3a;
+  background: var(--peach);
+}
+
+.nutrition-progress-card-blue .nutrition-card-icon {
+  color: #356d78;
+  background: var(--blue-soft);
+}
+
+.nutrition-progress-card-sun .nutrition-card-icon {
+  color: #7b6324;
+  background: #faefcf;
+}
+
+.nutrition-card-header p {
+  margin: 0 0 2px;
+  color: var(--ink-500);
+  font-size: 0.59rem;
+}
+
+.nutrition-card-header h3 {
+  overflow: hidden;
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nutrition-card-percentage {
+  color: var(--ink-600);
+  font-size: 0.68rem;
+  font-weight: 800;
+}
+
+.nutrition-card-consumed {
+  display: grid;
+  margin-block: 22px 16px;
+}
+
+.nutrition-card-consumed strong,
+.fiber-intake-value strong {
+  overflow-wrap: anywhere;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 2.6rem;
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.045em;
+}
+
+.nutrition-card-consumed span,
+.fiber-intake-value span {
+  margin-top: 4px;
+  color: var(--ink-500);
+  font-size: 0.63rem;
+}
+
+.nutrition-progress-track {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--surface-soft);
+}
+
+.nutrition-progress-track > span {
+  display: block;
+  width: var(--nutrition-progress);
+  max-width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--lime-deep);
+  transition: width 380ms ease;
+}
+
+.nutrition-progress-card-peach .nutrition-progress-track > span {
+  background: var(--coral);
+}
+
+.nutrition-progress-card-blue .nutrition-progress-track > span {
+  background: var(--sky);
+}
+
+.nutrition-progress-card-sun .nutrition-progress-track > span {
+  background: var(--sun);
+}
+
+.nutrition-card-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0 0;
+}
+
+.nutrition-card-details div {
+  min-width: 0;
+}
+
+.nutrition-card-details dt {
+  color: var(--ink-500);
+  font-size: 0.58rem;
+}
+
+.nutrition-card-details dd {
+  overflow-wrap: anywhere;
+  margin: 3px 0 0;
+  color: var(--ink-800);
+  font-size: 0.69rem;
+  font-weight: 750;
+}
+
+.nutrition-card-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: auto 0 0;
+  padding-top: 16px;
+  color: var(--ink-600);
+  font-size: 0.6rem;
+}
+
+.nutrition-card-status > span {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--lime-deep);
+}
+
+.nutrition-progress-card.is-over-target {
+  border-color: rgba(169, 69, 53, 0.22);
+}
+
+.nutrition-progress-card.is-over-target .nutrition-card-percentage,
+.nutrition-progress-card.is-over-target .nutrition-card-status {
+  color: var(--danger);
+}
+
+.nutrition-progress-card.is-over-target .nutrition-card-status > span,
+.nutrition-progress-card.is-over-target .nutrition-progress-track > span {
+  background: var(--danger);
+}
+
+.dashboard-content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 276px;
+  align-items: start;
+  gap: 16px;
+}
+
+.food-log-shell,
+.fiber-intake-card,
+.dashboard-error {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: #fff;
+  box-shadow: var(--shadow-xs);
+}
+
+.food-log-shell {
+  min-width: 0;
+  padding: 24px;
+  scroll-margin-top: 24px;
+}
+
+.dashboard-section-heading {
+  margin-bottom: 20px;
+}
+
+.dashboard-section-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dashboard-section-actions > span {
+  color: var(--ink-500);
+  font-size: 0.68rem;
+  font-weight: 650;
+}
+
+.dashboard-section-actions .button {
+  min-height: 40px;
+}
+
+.dashboard-toast-region {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1000;
+  width: min(calc(100vw - 48px), 460px);
+  display: flex;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+
+.dashboard-toast-region .toast {
+  color: var(--ink-800);
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+.dashboard-toast-region .toast svg {
+  flex: 0 0 auto;
+  color: var(--lime-deep);
+}
+
+.daily-meal-log {
+  min-width: 0;
+}
+
+.whole-day-empty {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding: 18px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.whole-day-empty > span {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  color: var(--ink-700);
+  background: var(--mint);
+}
+
+.whole-day-empty h3 {
+  margin-bottom: 4px;
+  font-size: 0.86rem;
+}
+
+.whole-day-empty div > p:last-child {
+  margin: 0;
+  color: var(--ink-600);
+  font-size: 0.68rem;
+}
+
+.whole-day-empty .button {
+  min-height: 40px;
+}
+
+.meal-section-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.meal-section {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+}
+
+.meal-section-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  border-bottom: 1px solid var(--line);
+  background: #fbfcfa;
+}
+
+.meal-section-icon {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  color: #6b7839;
+  background: #eef5d9;
+}
+
+.meal-section-lunch .meal-section-icon {
+  color: #8a573c;
+  background: var(--peach);
+}
+
+.meal-section-dinner .meal-section-icon {
+  color: #386b78;
+  background: var(--blue-soft);
+}
+
+.meal-section-snack .meal-section-icon {
+  color: #7b6324;
+  background: #faefcf;
+}
+
+.meal-section-header h3 {
+  margin: 0 0 2px;
+  font-size: 0.78rem;
+}
+
+.meal-section-header p {
+  margin: 0;
+  color: var(--ink-500);
+  font-size: 0.58rem;
+}
+
+.meal-section-header > strong {
+  font-size: 0.76rem;
+  white-space: nowrap;
+}
+
+.meal-section-header > strong small {
+  color: var(--ink-500);
+  font-size: 0.55rem;
+}
+
+.meal-section-empty {
+  min-height: 86px;
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: 8px;
+  padding: 16px;
+}
+
+.meal-section-empty p {
+  margin: 0;
+  color: var(--ink-500);
+  font-size: 0.65rem;
+}
+
+.meal-section-empty button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0;
+  border: 0;
+  color: var(--ink-700);
+  background: transparent;
+  font-size: 0.64rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.meal-section-empty button:hover {
+  color: var(--ink-950);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.meal-entry-list {
+  display: grid;
+}
+
+.meal-entry {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 10px;
+  padding: 15px;
+  border-top: 1px solid var(--line);
+  animation: rise-in 260ms calc(var(--entry-index) * 35ms) ease both;
+}
+
+.meal-entry:first-child {
+  border-top: 0;
+}
+
+.meal-entry-mark {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  color: var(--ink-700);
+  background: var(--surface-soft);
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.meal-entry-content,
+.meal-entry-heading > div {
+  min-width: 0;
+}
+
+.meal-entry-heading {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.meal-entry-heading h4,
+.meal-entry-heading p {
+  overflow: hidden;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.meal-entry-heading h4 {
+  font-size: 0.72rem;
+}
+
+.meal-entry-heading p {
+  margin-top: 2px;
+  color: var(--ink-500);
+  font-size: 0.59rem;
+}
+
+.meal-entry-heading > strong {
+  flex: 0 0 auto;
+  font-size: 0.68rem;
+  white-space: nowrap;
+}
+
+.meal-entry-heading > strong small {
+  color: var(--ink-500);
+  font-size: 0.53rem;
+}
+
+.meal-entry-macros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  margin: 9px 0 0;
+}
+
+.meal-entry-macros div {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.meal-entry-macros dt,
+.meal-entry-macros dd {
+  margin: 0;
+  font-size: 0.54rem;
+}
+
+.meal-entry-macros dt {
+  color: var(--ink-500);
+}
+
+.meal-entry-macros dd {
+  color: var(--ink-700);
+  font-weight: 750;
+}
+
+.meal-entry-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.meal-entry-actions button {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--ink-500);
+  background: transparent;
+  cursor: pointer;
+}
+
+.meal-entry-actions button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.meal-entry-actions button:not(:disabled):hover {
+  border-color: var(--line);
+  color: var(--ink-900);
+  background: var(--surface-soft);
+}
+
+.meal-entry-actions button:last-child:not(:disabled):hover {
+  color: var(--danger);
+  background: #fff2ee;
+}
+
+.fiber-intake-card {
+  position: sticky;
+  top: 24px;
+  min-width: 0;
+  padding: 24px;
+}
+
+.fiber-intake-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 36px;
+  border-radius: 12px;
+  color: #5f7a45;
+  background: var(--mint);
+}
+
+.fiber-intake-card h2 {
+  margin-bottom: 18px;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+}
+
+.fiber-intake-card > p:not(.dashboard-kicker) {
+  margin: 20px 0;
+  color: var(--ink-600);
+  font-size: 0.69rem;
+  line-height: 1.6;
+}
+
+.fiber-intake-value {
+  display: grid;
+}
+
+.fiber-no-target {
+  display: inline-flex;
+  padding: 6px 9px;
+  border-radius: 999px;
+  color: var(--ink-600);
+  background: var(--surface-soft);
+  font-size: 0.6rem;
+  font-weight: 700;
+}
+
+.dashboard-error {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 18px;
+  padding: 24px;
+}
+
+.dashboard-error > span {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  color: var(--danger);
+  background: #fff2ee;
+}
+
+.dashboard-error h2 {
+  margin-bottom: 6px;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.7rem;
+  font-weight: 400;
+}
+
+.dashboard-error p:not(.dashboard-kicker) {
+  margin: 0;
+  color: var(--ink-600);
+  font-size: 0.72rem;
+}
+
+.dashboard-loading {
+  display: grid;
+  gap: 42px;
+}
+
+.dashboard-skeleton {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface-muted);
+}
+
+.dashboard-skeleton::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+  content: '';
+  transform: translateX(-100%);
+  animation: dashboard-shimmer 1.4s infinite;
+}
+
+.dashboard-skeleton-stat {
+  height: 116px;
+}
+
+.nutrition-progress-skeleton {
+  height: 246px;
+}
+
+.dashboard-skeleton-panel {
+  height: 460px;
+}
+
+.dashboard-skeleton-panel-short {
+  height: 280px;
+}
+
+@keyframes dashboard-shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@media (max-width: 1180px) {
+  .nutrition-progress-grid,
+  .nutrition-progress-skeleton-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .fiber-intake-card {
+    position: static;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .fiber-intake-icon {
+    margin: 0;
+  }
+
+  .fiber-intake-card .dashboard-kicker,
+  .fiber-intake-card h2 {
+    grid-column: 2;
+  }
+
+  .fiber-intake-card h2 {
+    margin: -12px 0 0;
+  }
+
+  .fiber-intake-value {
+    grid-column: 3;
+    grid-row: 1 / span 2;
+    text-align: right;
+  }
+
+  .fiber-intake-card > p:not(.dashboard-kicker) {
+    grid-column: 1 / -1;
+    margin: 4px 0 0;
+  }
+
+  .fiber-no-target {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+}
+
+@media (max-width: 900px) {
+  .dashboard-app {
+    display: block;
+  }
+
+  .dashboard-sidebar {
+    display: none;
+  }
+
+  .dashboard-main {
+    min-height: 100vh;
+    padding: 92px 24px 108px;
+  }
+
+  .dashboard-mobile-header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 100;
+    min-height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px 20px;
+    border-bottom: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(14px);
+  }
+
+  .dashboard-mobile-account {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .dashboard-mobile-account > a {
+    width: 36px;
+    height: 36px;
+  }
+
+  .dashboard-mobile-account .button {
+    width: 38px;
+    padding: 0;
+  }
+
+  .dashboard-mobile-nav {
+    position: fixed;
+    inset: auto 12px 12px;
+    z-index: 100;
+    min-height: 66px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 4px;
+    padding: 7px;
+    border: 1px solid rgba(19, 61, 44, 0.14);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 16px 45px rgba(16, 37, 28, 0.16);
+    backdrop-filter: blur(14px);
+  }
+
+  .dashboard-mobile-nav-link {
+    position: relative;
+    min-width: 0;
+    min-height: 50px;
+    display: grid;
+    place-content: center;
+    justify-items: center;
+    gap: 4px;
+    border-radius: 12px;
+    color: var(--ink-500);
+    font-size: 0.55rem;
+    font-weight: 700;
+  }
+
+  .dashboard-mobile-nav-link span {
+    overflow: hidden;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .dashboard-mobile-nav-link.active {
+    color: var(--surface-deep);
+    background: #edf6e1;
+  }
+
+  .date-navigator {
+    grid-template-columns: 42px minmax(0, 1fr) 42px;
+  }
+
+  .date-navigator-actions {
+    grid-column: 1 / -1;
+    justify-content: center;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 680px) {
+  .dashboard-main {
+    padding-inline: 14px;
+  }
+
+  .dashboard-intro {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .dashboard-intro h1 {
+    font-size: clamp(2.65rem, 12vw, 3.7rem);
+  }
+
+  .dashboard-intro-actions .button {
+    width: 100%;
+  }
+
+  .date-navigator {
+    margin-bottom: 32px;
+  }
+
+  .nutrition-progress-heading,
+  .dashboard-section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .nutrition-progress-heading > p {
+    max-width: none;
+    text-align: left;
+  }
+
+  .nutrition-progress-grid,
+  .nutrition-progress-skeleton-grid,
+  .meal-section-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nutrition-progress-card {
+    min-height: 222px;
+  }
+
+  .food-log-shell {
+    padding: 18px;
+  }
+
+  .dashboard-section-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .whole-day-empty {
+    grid-template-columns: auto 1fr;
+  }
+
+  .whole-day-empty .button {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .fiber-intake-card {
+    grid-template-columns: auto 1fr;
+  }
+
+  .fiber-intake-value {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    text-align: left;
+  }
+
+  .dashboard-toast-region {
+    right: 14px;
+    bottom: 92px;
+    width: calc(100vw - 28px);
+  }
+
+  .dashboard-error {
+    grid-template-columns: auto 1fr;
+  }
+
+  .dashboard-error .button {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .dashboard-mobile-header {
+    padding-inline: 14px;
+  }
+
+  .dashboard-mobile-nav {
+    inset-inline: 8px;
+    bottom: 8px;
+  }
+
+  .date-navigator-label h2 {
+    font-size: 0.8rem;
+  }
+
+  .date-navigator-actions {
+    display: grid;
+    grid-template-columns: 1fr auto;
+  }
+
+  .date-navigator-actions input {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .meal-entry {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .meal-entry-actions {
+    grid-column: 2;
+    justify-self: end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-data,
+  .meal-entry,
+  .nutrition-progress-card {
+    animation: none;
+  }
+}
